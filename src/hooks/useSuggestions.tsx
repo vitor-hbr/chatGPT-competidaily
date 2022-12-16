@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import Suggestion from "../model/Suggestion";
-import Theme from "../model/Theme";
+import { useState } from 'react';
+import Suggestion from '../model/Suggestion';
 
 type Props = {
   themeID?: number;
@@ -8,10 +7,10 @@ type Props = {
 
 export const useSuggestions = ({ themeID }: Props) => {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>();
   const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
+  const getSuggestions = (themeID) => {
     if (themeID) {
       setLoading(true);
       fetch(`/api/suggestions?theme="${themeID}"`)
@@ -25,7 +24,7 @@ export const useSuggestions = ({ themeID }: Props) => {
           setLoading(false);
         });
     }
-  }, [themeID]);
+  };
 
-  return { suggestions, loading, error };
+  return { suggestions, loading, error, getSuggestions };
 };

@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { themesData } from '../../src/data/mock';
-import Theme from '../../src/model/Theme';
+import { suggestionsData } from '../../src/data/mock';
+import Suggestion from '../../src/model/Suggestion';
 
 type Data = {
-  themes: Theme[];
+  suggestions: Suggestion[];
 };
 
 export default function handler(
@@ -11,6 +11,6 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   setTimeout(() => {
-    res.status(200).json({ themes: themesData });
+    res.status(200).json({ suggestions: suggestionsData });
   }, 300);
 }

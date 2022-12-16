@@ -1,75 +1,85 @@
-import Suggestion from "../model/Suggestion";
-import Theme from "../model/Theme";
+import Suggestion from '../model/Suggestion';
+import Theme from '../model/Theme';
 
 export const themesData: Theme[] = [
   {
     id: 0,
-    name: "Gosto Musical",
+    name: 'Gosto Musical',
   },
   {
     id: 1,
-    name: "Cinema",
+    name: 'Cinema',
   },
   {
     id: 2,
-    name: "Séries",
+    name: 'Séries',
   },
   {
     id: 3,
-    name: "Fim do Mundo",
+    name: 'Fim do Mundo',
   },
   {
     id: 4,
-    name: "Apocalipse Zumbi",
+    name: 'Apocalipse Zumbi',
   },
   {
     id: 5,
-    name: "Viagens",
+    name: 'Viagens',
   },
   {
     id: 6,
-    name: "Familia",
+    name: 'Familia',
   },
   {
     id: 7,
-    name: "Comida",
+    name: 'Comida',
   },
   {
     id: 8,
-    name: "Hobbies",
+    name: 'Hobbies',
   },
   {
     id: 9,
-    name: "Manias Estranhas",
+    name: 'Manias Estranhas',
   },
   {
     id: 10,
-    name: "Dinheiro",
+    name: 'Dinheiro',
   },
   {
     id: 11,
-    name: "Viagem no Tempo",
+    name: 'Viagem no Tempo',
   },
   {
     id: 12,
-    name: "Entretenimento",
+    name: 'Entretenimento',
   },
 ];
 
 export const suggestionsData: Suggestion[] = [
   {
     id: 0,
-    text: "O que você acha de um filme de terror?",
-    themeID: 1,
+    text: 'Se você pudesse mudar um evento do passado, qual seria e por quê?',
+    themeID: 11,
   },
   {
     id: 1,
-    text: "O que você acha de um filme de comédia?",
-    themeID: 1,
+    text: 'Qual é o hobby que você gostaria de aprender, mas ainda não teve a chance?',
+    themeID: 8,
   },
   {
     id: 2,
-    text: "O que você acha de um filme de ação?",
-    themeID: 1,
+    text: 'Qual é a mania mais inusitada ou inesperada que você tem?',
+    themeID: 9,
+  },
+  {
+    id: 3,
+    text: 'Qual é a sua memória mais engraçada com a sua família?',
+    themeID: 6,
+  },
+  {
+    id: 4,
+    text: 'Qual seria a sua música preferida para ouvir durante o fim do mundo?',
+    themeID: 3,
   },
 ];

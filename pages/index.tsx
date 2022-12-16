@@ -1,14 +1,20 @@
-import Head from "next/head";
-import { useState } from "react";
-import { Dropdown } from "../src/components/Dropdown";
-import { SuggestionsList } from "../src/components/SuggestionsList";
-import { useSuggestions } from "../src/hooks/useSuggestions";
-import { useThemes } from "../src/hooks/useThemes";
+import Head from 'next/head';
+import Image from 'next/image';
+import { useState } from 'react';
+import { Dropdown } from '../src/components/Dropdown';
+import { Loading } from '../src/components/Loading';
+import { SuggestionsList } from '../src/components/SuggestionsList';
+import { useSuggestions } from '../src/hooks/useSuggestions';
+import { useThemes } from '../src/hooks/useThemes';
 
 export default function Home() {
   const [themeID, setThemeID] = useState<number>();
   const { themes, loading: isThemeLoading } = useThemes();
-  const { suggestions, loading: isSuggestionsLoading } = useSuggestions({
+  const {
+    suggestions,
+    getSuggestions,
+    loading: isSuggestionsLoading,
+  } = useSuggestions({
     themeID,
   });
 
@@ -18,23 +24,53 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Competidaily Generator - InstructGPT</title>
       </Head>
-      <section className="items-center bg-black text-center font-primary text-white">
-        <main className="flex h-screen max-h-full flex-1 flex-col bg-gradient-to-br from-primary/100 to-primary/5">
+      <section className="min-h-screen items-center bg-black text-center font-primary text-white">
+        <main className="flex min-h-screen flex-1 flex-col bg-gradient-to-br from-primary/100 to-primary/5">
           <h1 className="h-72 w-full pt-44 text-6xl font-bold">
             Competidaily Generator InstructGPT
           </h1>
-          <h4 className="w-full pb-24 text-xl font-normal">
+          <h4 className="w-full pb-24 text-xl font-normal underline">
             Nunca mais pense em uma competidaily
           </h4>
-          <div>
-            {!isThemeLoading && (
-              <Dropdown
-                data={themes}
-                onChange={(e) => setThemeID(Number(e.target.value))}
-              />
-            )}
+          <div
+            className={
+              'flex h-[50px] w-[53%] items-center justify-between self-center rounded-xl border-black bg-secondary p-4 text-center'
+            }
+          >
+            <h4 className={'inline-block pr-[200px]'}>
+              Faça perguntas criativas sobre...{' '}
+            </h4>
+            <div className={'flex flex-row'}>
+              {isThemeLoading === true ? (
+                <Loading className={'self-center'} />
+              ) : isThemeLoading === undefined ? (
+                <></>
+              ) : (
+                <Dropdown
+                  data={themes}
+                  onChange={(e) => setThemeID(Number(e.target.value))}
+                />
+              )}
+              <button
+                onClick={() => {
+                  getSuggestions(themeID);
+                }}
+              >
+                <Image
+                  src={'/search.svg'}
+                  alt={'Icone para busca'}
+                  width={24}
+                  height={24}
+                  className={'ml-4'}
+                />
+              </button>
+            </div>
           </div>
-          {!isSuggestionsLoading && (
+          {isSuggestionsLoading === true ? (
+            <Loading className={'mt-6 self-center'} />
+          ) : isSuggestionsLoading === undefined ? (
+            <></>
+          ) : (
             <SuggestionsList suggestions={suggestions} themes={themes} />
           )}
           <section className="flex flex-row justify-around pt-44">

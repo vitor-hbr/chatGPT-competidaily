@@ -1,4 +1,4 @@
-import Theme from "../model/Theme";
+import Theme from '../model/Theme';
 
 type Props = {
   data: Theme[];
@@ -8,11 +8,11 @@ type Props = {
 export const Dropdown = ({ data, onChange }: Props) => {
   return (
     <select
-      className="w-[1000px] rounded-md border bg-secondary p-2.5 shadow-sm outline-none focus:border-primary"
+      className="inline-block rounded-3xl bg-secondary-100 p-1 shadow-sm outline-none focus:border-primary"
       onChange={onChange}
     >
       {data.map((item) => (
-        <option key={item.id} value={item.id}>
+        <option key={item.id} value={item.id} className={'ml-5'}>
           {item.name}
         </option>
       ))}
