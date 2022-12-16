@@ -1,7 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
+import { useState } from "react";
+import { Dropdown } from "../src/components/Dropdown";
+import { SuggestionsList } from "../src/components/SuggestionsList";
+import { useSuggestions } from "../src/hooks/useSuggestions";
+import { useThemes } from "../src/hooks/useThemes";
 
 export default function Home() {
+  const [themeID, setThemeID] = useState<number>();
+  const { themes, loading: isThemeLoading } = useThemes();
+  const { suggestions, loading: isSuggestionsLoading } = useSuggestions({
+    themeID,
+  });
+
   return (
     <>
       <Head>
@@ -13,17 +23,20 @@ export default function Home() {
           <h1 className="h-72 w-full pt-44 text-6xl font-bold">
             Competidaily Generator InstructGPT
           </h1>
-          <h2 className="w-full pb-24 text-xl font-normal">
+          <h4 className="w-full pb-24 text-xl font-normal">
             Nunca mais pense em uma competidaily
-          </h2>
+          </h4>
           <div>
-            <select className="w-[1000px] rounded-md border bg-secondary p-2.5 shadow-sm outline-none focus:border-primary">
-              <option>ReactJS Dropdown</option>
-              <option>Laravel 9 with React</option>
-              <option>React with Tailwind CSS</option>
-              <option>React With Headless UI</option>
-            </select>
+            {!isThemeLoading && (
+              <Dropdown
+                data={themes}
+                onChange={(e) => setThemeID(Number(e.target.value))}
+              />
+            )}
           </div>
+          {!isSuggestionsLoading && (
+            <SuggestionsList suggestions={suggestions} themes={themes} />
+          )}
           <section className="flex flex-row justify-around pt-44">
             <div className="max-w-[420px]">
               <h2 className="pb-16 text-4xl font-bold">
