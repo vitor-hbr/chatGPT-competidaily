@@ -74,8 +74,8 @@ export default function Home() {
             <SuggestionsList suggestions={suggestions} themes={themes} />
           )}
           <section className="flex flex-row justify-around pt-44">
-            <div className="max-w-[420px]">
-              <h2 className="pb-16 text-left text-4xl font-bold">
+            <div className="max-w-[420px] text-left ">
+              <h2 className="pb-16 text-4xl font-bold">
                 O que é uma competidaily?
               </h2>
               <p>
@@ -85,8 +85,8 @@ export default function Home() {
                 conhecer melhor seus colegas de trabalho.
               </p>
             </div>
-            <div className="max-w-[420px]">
-              <h2 className="max-w-[410px] pb-16 text-right text-4xl font-bold">
+            <div className="max-w-[420px] text-right">
+              <h2 className="max-w-[410px] pb-16 text-4xl font-bold">
                 O que é o InstructGPT?
               </h2>
               <p>
