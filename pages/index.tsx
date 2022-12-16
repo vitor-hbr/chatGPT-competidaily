@@ -8,7 +8,7 @@ import { useSuggestions } from "../src/hooks/useSuggestions";
 import { useThemes } from "../src/hooks/useThemes";
 
 export default function Home() {
-  const [themeID, setThemeID] = useState<number>();
+  const [themeID, setThemeID] = useState<number>(0);
   const { themes, loading: isThemeLoading } = useThemes();
   const {
     suggestions,
