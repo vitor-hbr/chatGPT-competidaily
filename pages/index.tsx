@@ -1,11 +1,11 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { useState } from 'react';
-import { Dropdown } from '../src/components/Dropdown';
-import { Loading } from '../src/components/Loading';
-import { SuggestionsList } from '../src/components/SuggestionsList';
-import { useSuggestions } from '../src/hooks/useSuggestions';
-import { useThemes } from '../src/hooks/useThemes';
+import Head from "next/head";
+import Image from "next/image";
+import { useState } from "react";
+import { Dropdown } from "../src/components/Dropdown";
+import { Loading } from "../src/components/Loading";
+import { SuggestionsList } from "../src/components/SuggestionsList";
+import { useSuggestions } from "../src/hooks/useSuggestions";
+import { useThemes } from "../src/hooks/useThemes";
 
 export default function Home() {
   const [themeID, setThemeID] = useState<number>();
@@ -34,15 +34,15 @@ export default function Home() {
           </h4>
           <div
             className={
-              'flex h-[50px] w-[53%] items-center justify-between self-center rounded-xl border-black bg-secondary p-4 text-center'
+              "flex h-[50px] w-[53%] items-center justify-between self-center rounded-xl border-black bg-secondary p-4 text-center"
             }
           >
-            <h4 className={'inline-block pr-[200px]'}>
-              Faça perguntas criativas sobre...{' '}
+            <h4 className={"inline-block pr-[200px]"}>
+              Faça perguntas criativas sobre...{" "}
             </h4>
-            <div className={'flex flex-row'}>
+            <div className={"flex flex-row"}>
               {isThemeLoading === true ? (
-                <Loading className={'self-center'} />
+                <Loading className={"self-center"} />
               ) : isThemeLoading === undefined ? (
                 <></>
               ) : (
@@ -57,17 +57,17 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src={'/search.svg'}
-                  alt={'Icone para busca'}
+                  src={"/search.svg"}
+                  alt={"Icone para busca"}
                   width={24}
                   height={24}
-                  className={'ml-4'}
+                  className={"ml-4"}
                 />
               </button>
             </div>
           </div>
           {isSuggestionsLoading === true ? (
-            <Loading className={'mt-6 self-center'} />
+            <Loading className={"mt-6 self-center"} />
           ) : isSuggestionsLoading === undefined ? (
             <></>
           ) : (
@@ -75,7 +75,7 @@ export default function Home() {
           )}
           <section className="flex flex-row justify-around pt-44">
             <div className="max-w-[420px]">
-              <h2 className="pb-16 text-4xl font-bold">
+              <h2 className="pb-16 text-left text-4xl font-bold">
                 O que é uma competidaily?
               </h2>
               <p>
@@ -86,7 +86,7 @@ export default function Home() {
               </p>
             </div>
             <div className="max-w-[420px]">
-              <h2 className="pb-16 text-4xl font-bold">
+              <h2 className="max-w-[410px] pb-16 text-right text-4xl font-bold">
                 O que é o InstructGPT?
               </h2>
               <p>
